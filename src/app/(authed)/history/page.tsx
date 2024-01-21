@@ -5,7 +5,7 @@ import menu from "@public/assets/menu.svg";
 import Image from "next/image";
 import { ColumnType } from "antd/es/table";
 
-function page() {
+function Page() {
   const [padding, setPadding] = useState("24px 48px");
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function page() {
     if (window.innerWidth >= 1440) {
       setPadding("24px 48px");
     }
-  }, [window.innerWidth]);
+  }, []);
 
   const column: ColumnType<any>[] = [
     {
@@ -106,4 +106,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

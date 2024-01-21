@@ -10,8 +10,8 @@ function select({ options, placeholder, width }: any) {
         variant="borderless"
         placeholder={placeholder}
       >
-        {options.map((option: any) => {
-          return <Option value={option}>{option}</Option>;
+        {options.map((option: any, key: any) => {
+          return <Option value={option} key={key}>{option}</Option>;
         })}
       </Select>
     </div>

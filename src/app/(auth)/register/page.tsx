@@ -12,8 +12,9 @@ import addressIcon from "@public/assets/address.svg";
 import shop from "@public/assets/shop.svg";
 import { useRouter } from "next/navigation";
 
-function page() {
-  const router = useRouter();
+  
+function Page() {
+const router = useRouter();
   return (
     <div className="w-[100%] px-[2%] lg:px-[3%] xl:px-[7%] flex flex-col md:flex-row justify-between py-8 md:py-12 lg:py-24 bg-[#F8F3F1] min-h-screen">
       <div className="flex flex-col md:w-[48%] ">
@@ -159,4 +160,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

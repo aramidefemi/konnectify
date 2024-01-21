@@ -29,9 +29,9 @@ import Pay from "@public/assets/Pay.svg";
 import Blow from "@public/assets/Blow-away.svg";
 import copy from "@public/assets/c.svg";
 
-
 export default function Home() {
   const router = useRouter();
+
   const [method, setMethod] = useState("Select Audience Manager on the Ad Manager");
   const [methodIndex, setMethodIndex] = useState(1);
 
@@ -101,7 +101,7 @@ export default function Home() {
         <div className="w-[98%] md:w-[90%] lg:w-[85%] xl:w-[65%] mx-auto text-center">
           <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl italic font-[400] text-[#6742F1]">
             <span className="text-[#141414]">Marketing</span> To the Right
-            Audience Shouldn't be Rocket Science. We Make Sure It Isn't.
+            Audience Shouldn&apos;t be Rocket Science. We Make Sure It Isn&apos;t.
           </h1>
           <p className="my-2 md:my-4 lg:my-6 xl:my-8 text-sm md:text-base lg:text-lg xl:text-xl w-[90%] mx-auto">
             Experience effortless delivery of your adverts in any form (Text,
@@ -204,7 +204,7 @@ export default function Home() {
         <div className="mt-8 md:mt-12 lg:mt-24 w-[90%] xl:w-[70%] mx-auto bg-[#6742F1] flex flex-col items-center justify-center text-center text-2xl md:text-4xl lg:text-5xl text-[#fff] py-3 md:py-6 lg:py-8 rounded-[24px]">
           <p>Ready to Start Your Ad Campaign?</p>
           <button className=" text-sm md:text-base lg:text-lg w-[50%] mt-3 md:mt-4 lg:mt-8  bg-[#FFA602] md:w-[35%] xl:w-[270px] py-2 md:py-4 rounded-lg text-[#150062]" onClick={() => router.push("/register")}>
-            Let's GO
+            Let&apos;s GO
           </button>
         </div>
       </section>

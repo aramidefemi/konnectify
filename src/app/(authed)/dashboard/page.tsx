@@ -7,7 +7,7 @@ import Select from "@/ui-library/select";
 import cursor from "@public/assets/cursor.svg";
 import PaymentSucessful from "./fragment.tsx/payment-sucessful";
 
-function page() {
+function Page() {
     const [open, setOpen] = useState(false);
     const [selectWidth, setSelectWidth] = useState('46%');
 
@@ -27,7 +27,7 @@ function page() {
       setPadding("24px 48px");
     }
   
-    }, [window.innerWidth])
+    }, [])
 
     useEffect(() => {
       if (window.innerWidth < 768) {
@@ -221,4 +221,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

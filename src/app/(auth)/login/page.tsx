@@ -7,8 +7,9 @@ import mailIcon from "@public/assets/mail.svg";
 import passwordIcon from "@public/assets/password.svg";
 import { useRouter } from "next/navigation";
 
-function page() {
-  const router = useRouter();
+  
+const Page = () => {
+const router = useRouter();
   return (
     <div className="w-[100%] px-[2%] lg:px-[3%] xl:px-[7%] flex flex-col md:flex-row justify-between py-8 md:py-12 lg:py-24 bg-[#F8F3F1] min-h-screen">
       <div className="flex flex-col md:w-[48%] ">
@@ -61,7 +62,7 @@ function page() {
                 Login
               </Button>
               <div className="flex justify-between mt-4 text-sm md:text-base lg:text-lg xl:text-xl">
-                <p>Don't have an account?</p>
+                <p>Don&apos;t have an account?</p>
                 <p className="text-[#6742F1] cursor-pointer" onClick={() => router.push("/register")}>Sign up</p>
               </div>
             </div>
@@ -75,4 +76,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

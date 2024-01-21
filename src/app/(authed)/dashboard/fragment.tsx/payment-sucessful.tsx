@@ -25,7 +25,7 @@ function PaymentSucessful({
     if (window.innerWidth >= 1550) {
       setWidth(800);
     }
-  }, [window.innerWidth]);
+  }, []);
 
   return (
     <Modal
