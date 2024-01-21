@@ -13,7 +13,9 @@ function Page() {
 
     const [padding, setPadding] = useState("24px 48px");
 
-    useEffect(() => {
+  useEffect(() => {
+      if (typeof window !== "undefined") {
+ 
     if(window.innerWidth < 768) {
       setPadding("10px 10px");
     }
@@ -25,17 +27,20 @@ function Page() {
     }
     if(window.innerWidth >= 1440) {
       setPadding("24px 48px");
-    }
-  
+    } 
+}
     }, [])
 
-    useEffect(() => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+ 
       if (window.innerWidth < 768) {
         setSelectWidth('100%')
       } else {
         setSelectWidth('46%')
-      }   
-    },[window.innerWidth])
+      }
+    }     
+    },[])
   return (
     <div className="w-[100%]">
       <p className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl">

@@ -9,17 +9,20 @@ function Page() {
   const [padding, setPadding] = useState("24px 48px");
 
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      setPadding("10px 10px");
-    }
-    if (window.innerWidth >= 768) {
-      setPadding("12px 12px");
-    }
-    if (window.innerWidth >= 1024) {
-      setPadding("16px 16px");
-    }
-    if (window.innerWidth >= 1440) {
-      setPadding("24px 48px");
+    if (typeof window !== "undefined") {
+ 
+      if (window.innerWidth < 768) {
+        setPadding("10px 10px");
+      }
+      if (window.innerWidth >= 768) {
+        setPadding("12px 12px");
+      }
+      if (window.innerWidth >= 1024) {
+        setPadding("16px 16px");
+      }
+      if (window.innerWidth >= 1440) {
+        setPadding("24px 48px");
+      }
     }
   }, []);
 

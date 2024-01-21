@@ -13,17 +13,20 @@ function PaymentSucessful({
   const [width, setWidth] = useState(800);
 
   useEffect(() => {
-    if (window.innerWidth < 768) {
-      setWidth(300);
-    }
-    if (window.innerWidth >= 768 && window.innerWidth < 1024) {
-      setWidth(400);
-    }
-    if (window.innerWidth >= 1024) {
-      setWidth(650);
-    }
-    if (window.innerWidth >= 1550) {
-      setWidth(800);
+    if (typeof window !== "undefined") {
+ 
+      if (window.innerWidth < 768) {
+        setWidth(300);
+      }
+      if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+        setWidth(400);
+      }
+      if (window.innerWidth >= 1024) {
+        setWidth(650);
+      }
+      if (window.innerWidth >= 1550) {
+        setWidth(800);
+      }
     }
   }, []);
 

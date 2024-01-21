@@ -52,9 +52,10 @@ function Layout({ children }: { children: React.ReactNode }) {
             <Link
               href="/dashboard"
               className={`${
-                window.location.pathname === "/dashboard"
-                  ? "bg-[#F8F3F1] text-[#000] rounded-l-[30px]"
-                  : ""
+                // window.location.pathname === "/dashboard"
+                // ?
+                "bg-[#F8F3F1] text-[#000] rounded-l-[30px]"
+                  // : ""
               } flex items-center gap-2 xl:gap-3 p-4 hover:p-4 hover:rounded-l-[30px] hover:bg-[#F8F3F1] hover:text-[#000]`}
               onMouseEnter={handleDshbordMouseEnter}
               onMouseLeave={handleDshbordMouseLeave}
@@ -62,9 +63,10 @@ function Layout({ children }: { children: React.ReactNode }) {
             >
               <Image
                 src={
-                  isHovered || window.location.pathname === "/dashboard"
-                    ? orgShop
-                    : shop
+                  // isHovered || window.location.pathname === "/dashboard"
+                  //   ?
+                    orgShop
+                    // : shop
                 }
                 alt=""
               />{" "}
@@ -73,9 +75,10 @@ function Layout({ children }: { children: React.ReactNode }) {
             <Link
               href="/history"
               className={`${
-                window.location.pathname === "/history"
-                  ? "bg-[#F8F3F1] text-[#000] rounded-l-[30px]"
-                  : ""
+                // window.location.pathname === "/history"
+                // ?
+                "bg-[#F8F3F1] text-[#000] rounded-l-[30px]"
+                  // : ""
               } flex items-center gap-3 mt-8 md:mt-10 xl:mt-14 p-4 hover:p-4 hover:rounded-l-[30px] hover:bg-[#F8F3F1] hover:text-[#000]`}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -83,9 +86,10 @@ function Layout({ children }: { children: React.ReactNode }) {
             >
               <Image
                 src={
-                  isHovered2 || window.location.pathname === "/history"
-                    ? orgRise
-                    : rise
+                  // isHovered2 || window.location.pathname === "/history"
+                    // ?
+                    orgRise
+                    // : rise
                 }
                 alt=""
               />{" "}
