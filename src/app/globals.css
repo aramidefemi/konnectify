@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+.how-it-works-box:hover {
+  box-shadow: 0px 17px 145px 0px rgba(0, 0, 0, 0.09);
+}
+
+.how-it-works-box-active {
+  box-shadow: 0px 17px 145px 0px rgba(0, 0, 0, 0.09);
+}
+
+.ant-btn-primary:hover {
+  color: #150062 !important;
+  background-color: #ffa602 !important;
+}
+
+.ant-btn-primary {
+  height: 48px !important;
+}
+
+/* 
+.ant-input-lg:focus, .ant-input-lg:hover {
+  background-color: red !important;
+} */
+
+/* styles.css */
+
+.register {
+  background-image: url("/assets/Speaker2.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+.orange-filter:hover > .filter {
+  filter: brightness(0) invert(1) sepia(1) saturate(6) hue-rotate(40deg);
+}
+
+.ant-table-thead >tr>th{
+  background-color: transparent !important;
+  border-bottom: none !important;
+  border-right: none !important;
+
+}
+
+.ant-table-tbody >tr>td{
+  background-color: #F8F3F1 !important;
+  border-bottom: none !important;
+  border-right: none !important;
+  margin:20px 20px !important; 
+}
+td.ant-table-cell-fix-left{
+  /* background-color: #F8F3F1 !important;
+  border-bottom: none !important;
+  border-right: none !important; */
+  margin:20px 20px !important; 
+}
+
+.ant-table-row {
+border-radius: 40px !important;
+  margin:20px 20px !important; 
+}
+
+.ant-table-tbody >tr>td, .ant-table-thead >tr>th{
+  font-size:18px !important ;
+}
+
+@media screen and (max-width: 768px) {
+  .ant-table-tbody >tr>td, .ant-table-thead >tr>th {
+    font-size: 12px !important;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .ant-table-tbody >tr>td, .ant-table-thead >tr>th {
+    font-size: 16px !important;
+  }
+}
+@media screen and (min-width: 1536px) {
+  .ant-table-tbody >tr>td, .ant-table-thead >tr>th {
+    font-size: 20px !important;
+  }
+}
+
+@layer components {
+  .label {
+    @apply font-normal text-[10px] md:text-xs lg:text-[0.83vw] leading-[135%];
+  }
+  .body-small {
+    @apply font-normal text-xs md:text-sm lg:text-[0.97vw];
+  }
+  .body-smallTwo {
+    @apply font-medium text-sm lg:text-[0.97vw];
+  }
+  .body-smallThree {
+    @apply font-bold text-sm md:text-base lg:text-[0.97vw];
+  }
+  .text-new-heading {
+    @apply font-semibold text-sm lg:text-[0.97vw];
+  }
+  .body-default {
+    @apply font-normal text-sm md:text-base lg:text-[1.1vw] leading-normal;
+  }
+  .body-default2 {
+    @apply font-medium text-sm md:text-base lg:text-[1.1vw] leading-normal;
+  }
+  .body-default-bold {
+    @apply font-bold text-sm md:text-base lg:text-[1.1vw] leading-normal;
+  }
+  .body-large {
+    @apply font-normal text-lg leading-[155%];
+  }
+  .default-button {
+    @apply font-medium text-base leading-[140%];
+  }
+  .small-button {
+    @apply font-medium text-sm lg:text-[0.97vw] leading-[145%];
+  }
+  .title-6 {
+    @apply font-bold text-xs leading-[135%];
+  }
+  .title-5 {
+    @apply font-semibold text-sm md:text-base lg:text-[1.1vw] leading-normal;
+  }
+  .title-4 {
+    @apply font-semibold text-xl lg:text-[1.38vw] leading-[140%];
+  }
+  .title-3 {
+    @apply font-bold text-base md:text-xl lg:text-[1.38vw] leading-[140%];
+  }
+  .text-new-heading-2 {
+    @apply font-semibold text-base md:text-xl lg:text-[1.38vw] leading-[140%];
+  }
+  .title-2 {
+    @apply font-semibold text-[1.2rem] md:text-[1.5rem] lg:text-[2.2vw] leading-[150%];
+  }
+  .title-1 {
+    @apply font-bold text-[2rem] sm:text-[2.5rem] lg:text-[2.7vw] leading-[140%];
+  }
+  .hero-heading {
+    @apply font-extrabold text-[4.75rem] tracking-tighter leading-[5.5rem];
+  }
+}
