@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";  
+import axios from "axios"; 
 import logo from "@public/assets/logo-black.svg";
 import Image from "next/image";
 import { Form, Input, Button, Checkbox } from "antd";
@@ -13,8 +14,31 @@ import shop from "@public/assets/shop.svg";
 import { useRouter } from "next/navigation";
 
   
-function Page() {
+function Page() { 
 const router = useRouter();
+const [loading, setLoading] = useState(false);
+
+const handleRegistration = async (values: any) => {
+  setLoading(true);
+
+  try {
+    // Make API request using Axios
+    const response = await axios.post(
+      "http://localhost:3000/auth/register",
+      values
+    );
+
+    // Assuming the API response contains a success message or data
+    console.log("Registration successful:", response.data);
+
+    // Redirect to login page after successful registration
+    router.push("/login");
+  } catch (error) {
+    console.error("Registration failed", error);
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className="w-[100%] px-[2%] lg:px-[3%] xl:px-[7%] flex flex-col md:flex-row justify-between py-8 md:py-12 lg:py-24 bg-[#F8F3F1] min-h-screen">
       <div className="flex flex-col md:w-[48%] ">
@@ -26,6 +50,7 @@ const router = useRouter();
           className="mt-2 md:mt-6 lg:mt-8 w-[90%] mx-auto md:mx-0 lg:w-[80%]"
           autoComplete="off"
           layout="vertical"
+          onFinish={handleRegistration} // Set onFinish callback
         >
           <Form.Item
             name="name"
@@ -132,11 +157,12 @@ const router = useRouter();
           </Form.Item>
           <Form.Item className="mt-8 md:mt-12 lg:mt-16">
             <div>
-              <Button
+            <Button
                 type="primary"
                 htmlType="submit"
                 size="large"
                 className="w-full bg-[#FFA602] text-[#150062] hover:bg-[#FFA602]"
+                loading={loading}
               >
                 Signup
               </Button>

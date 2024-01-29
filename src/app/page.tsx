@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
+import Link from 'next/link';
 import Image from "next/image";
-import logo from "@public/assets/logo-black.svg";
-import Link from "next/link";
+import logo from "@public/assets/logo-black.svg"; 
 import { useRouter } from "next/navigation";
 import guy from "@public/assets/guy-pic.svg";
 import typingPc from "@public/assets/typing-pc.svg";
@@ -93,9 +93,10 @@ export default function Home() {
           <Link href="#">About Us</Link>
           <Link href="#">How it works</Link>
         </div>
-        <button className="md:px-6 py-2 px-3 text-sm md:text-base lg:text-lg rounded-lg font-normal text-[#150062] border border-[#150062]" onClick={() => router.push("/login")}>
+        <Link href="/login"  className="md:px-6 py-2 px-3 text-sm md:text-base lg:text-lg rounded-lg font-normal text-[#150062] border border-[#150062]"  >
           Login
-        </button>
+        
+        </Link>
       </section>
       <section className="mt-8 md:mt-12 lg:mt-28 relative">
         <div className="w-[98%] md:w-[90%] lg:w-[85%] xl:w-[65%] mx-auto text-center">
@@ -108,9 +109,10 @@ export default function Home() {
             Graphics, or Video) to the OAU Campus audience with Konnectify for
             Business
           </p>
-          <button className="text-lg md:text-2xl w-[60%] lg:text-3xl xl:text-4xl bg-[#FFA602] md:w-[35%] lg:w-[40%] xl:w-[340px] 2xl:w-[350px] py-2 md:py-4 xl:py-6 rounded-lg text-[#150062] font-semibold" onClick={() => router.push("/register")} disabled={false}>
+          <Link href="/register" className="text-lg  md:text-2xl w-[60%] lg:text-3xl xl:text-4xl bg-[#FFA602] md:w-[35%] lg:w-[40%] xl:w-[340px] 2xl:w-[350px] py-2 md:py-4 xl:py-6 rounded-lg text-[#150062] font-semibold" 
+         >
             Get Started
-          </button>
+         </Link>
         </div>
         <div className="flex items-center justify-between">
           <Image src={typingPc} alt="logo" className="w-[50%] -mt-[5%]" />
@@ -154,9 +156,10 @@ export default function Home() {
             </p>
           </div>
           <div className="mt-6">
-            <button className="bg-[#FFA602] text-[#150062] font-normal text-base md:text-lg lg:text-xl px-8 py-3 md:py-4 rounded-lg " onClick={() => router.push("/register")}>
+          <Link href="/register"  className="bg-[#FFA602] text-[#150062] font-normal text-base md:text-lg lg:text-xl px-8 py-3 md:py-4 rounded-lg "  >
               Start Advertising
-            </button>
+           
+            </Link>
           </div>
         </div>
       </section>

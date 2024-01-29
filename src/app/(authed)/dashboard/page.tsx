@@ -1,17 +1,24 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect, useContext } from "react";
 import Image from "next/image";
-import { Card, Input, Button } from "antd";
+import { Card, Input, Button, message } from "antd";
 import line from "@public/assets/Line 1.svg";
 import Select from "@/ui-library/select";
 import cursor from "@public/assets/cursor.svg";
 import PaymentSucessful from "./fragment.tsx/payment-sucessful";
+import { useUserContext } from "../../../contexts/UserContext"; // Import your user context
+import useAdCreation from './useAdCreation';
+
 
 function Page() {
     const [open, setOpen] = useState(false);
     const [selectWidth, setSelectWidth] = useState('46%');
 
     const [padding, setPadding] = useState("24px 48px");
+
+    const { user } = useUserContext(); // Use your user context
+
+    const { createAd, loading, error, success } = useAdCreation();
 
   useEffect(() => {
       if (typeof window !== "undefined") {
@@ -41,6 +48,40 @@ function Page() {
       }
     }     
     },[])
+
+    const handleAdCreation = async () => {
+      try {
+        if (user) {
+          const { token } = user;
+          const adData = {
+            audience: {
+              gender: "Male",
+              level: "Senior",
+              religion: "Christian",
+              department: "IT",
+              residence: "City",
+              stateOfOrigin: "Lagos",
+            },
+            platform: "sms",
+            senderId: "YourSender",
+            adContent: "Your ad content goes here",
+            userId: "65b6dba0afa437b9fb883f9d",
+          };
+  
+          // Make API request using Axios
+         const response = await createAd(adData, token);
+          // Assuming the API response contains a success message or data
+          console.log("Ad creation successful:", response.data);
+  
+          // Optionally, show a success message
+          message.success("Ad creation successful");
+        }
+      } catch (error) {
+        console.error("Ad creation failed", error);
+        // Optionally, show an error message
+        message.error("Ad creation failed");
+      }
+    };
   return (
     <div className="w-[100%]">
       <p className="text-xl md:text-2xl lg:text-3xl 2xl:text-4xl">
@@ -209,15 +250,15 @@ function Page() {
             />
           </div>
           <div className="mt-8 md:mt-12 lg:mt-40 w-[60%] text-center mx-auto mb-8 md:mb-16 lg:mb-32">
-            <Button
-              type="primary"
-              htmlType="submit"
-              size="large"
-              className="w-[100%] bg-[#FFA602] text-[#150062] hover:bg-[#FFA602] mx-auto"
-              onClick={() => setOpen(true)}
-            >
-              Make Payment
-            </Button>
+          <Button
+        type="primary"
+        htmlType="submit"
+        size="large"
+        className="w-[100%] bg-[#FFA602] text-[#150062] hover:bg-[#FFA602] mx-auto"
+        onClick={handleAdCreation}
+      >
+        Make Payment
+      </Button>
           </div>
         </div>
         <PaymentSucessful visible={open} setVisible={setOpen} />

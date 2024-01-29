@@ -1,12 +1,18 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Table } from "antd";
 import menu from "@public/assets/menu.svg";
 import Image from "next/image";
+import axios from "axios";
+import { useUserContext } from "../../../contexts/UserContext"; // Import your user context
 import { ColumnType } from "antd/es/table";
 
 function Page() {
   const [padding, setPadding] = useState("24px 48px");
+  const { user } = useUserContext(); // Use your user context
+ 
+  const [adsHistory, setAdsHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -74,25 +80,39 @@ function Page() {
     },
   ];
 
-  const dataSource = [
-    {
-      key: "1",
-      date: "2022-01-01",
-      reach: "1000",
-      cost: "$500",
-      platform: "Facebook",
-      status: "pending",
-    },
-    {
-      key: "2",
-      date: "2022-01-05",
-      reach: "2000",
-      cost: "$800",
-      platform: "Instagram",
-      status: "delivered",
-    },
-    // Add more data entries as needed
-  ];
+
+  useEffect(() => {
+    const fetchAdsHistory = async () => {
+      setLoading(true);
+
+      try {
+        // Check if user is logged in
+        if (user) {
+          const { user_id, token } = user;
+
+          // Make API request using Axios
+          const response = await axios.get(
+            `http://localhost:6000/ads/history/${user_id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          // Assuming the API response contains an 'ads' property
+          setAdsHistory(response.data.ads);
+        }
+      } catch (error) {
+        console.error("Error fetching ad history:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAdsHistory();
+  }, [user]); // Trigger the effect when the user changes
+
   return (
     <div>
       {" "}
@@ -103,7 +123,12 @@ function Page() {
         className="mt-8 md:mt-12 lg:mt-16 w-[100%] mx-auto md:mx-0"
         bodyStyle={{ padding: padding }}
       >
-        <Table dataSource={dataSource} columns={column} className="w-[100%]"/>
+      <Table
+          dataSource={adsHistory}
+          columns={column}
+          className="w-[100%]"
+          loading={loading}
+        />
       </Card>
     </div>
   );

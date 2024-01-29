@@ -1,15 +1,48 @@
 "use client";
-import React from "react";
-import logo from "@public/assets/logo-black.svg";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Form, Input, Button } from "antd";
 import Image from "next/image";
-import { Form, Input, Button} from "antd";
+import axios from "axios";
+import { useUserContext } from "../../../contexts/UserContext"; // Import your user context
+
+import logo from "@public/assets/logo-black.svg";
 import mailIcon from "@public/assets/mail.svg";
 import passwordIcon from "@public/assets/password.svg";
-import { useRouter } from "next/navigation";
 
-  
 const Page = () => {
-const router = useRouter();
+  const router = useRouter();
+  const { setUser } = useUserContext(); // Use your user context functions
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (values: any) => {
+    setLoading(true);
+
+    try {
+      // Make API request using Axios
+      const response = await axios.post(
+        "http://localhost:6000/auth/login",
+        values
+      );
+
+      // Assuming the API response contains a token and user details
+      const { token, user } = response.data;
+
+      // Store token in local storage
+      localStorage.setItem("token", token);
+
+      // Set user details in context
+      setUser(user);
+
+      // Navigate to dashboard
+      // router.push("/dashboard");
+    } catch (error) {
+      console.error("Login failed", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-[100%] px-[2%] lg:px-[3%] xl:px-[7%] flex flex-col md:flex-row justify-between py-8 md:py-12 lg:py-24 bg-[#F8F3F1] min-h-screen">
       <div className="flex flex-col md:w-[48%] ">
@@ -18,10 +51,11 @@ const router = useRouter();
           Welcome back,
         </h1>
         <Form
-          className="mt-8 md:mt-12 lg:mt-16 w-[90%] mx-auto md:mx-0 lg:w-[80%]"
-          autoComplete="off"
-          layout="vertical"
-        >
+        className="mt-8 md:mt-12 lg:mt-16 w-[90%] mx-auto md:mx-0 lg:w-[80%]"
+        autoComplete="off"
+        layout="vertical"
+        onFinish={handleLogin} // Set onFinish callback
+      >
           <Form.Item
             name="email"
             rules={[{ required: true, message: "Please input your email!" }]}
@@ -52,15 +86,15 @@ const router = useRouter();
 
           <Form.Item className="mt-8 md:mt-12 lg:mt-32">
             <div>
-              <Button
-                type="primary"
-                htmlType="submit"
-                size="large"
-                className="w-full bg-[#FFA602] text-[#150062] hover:bg-[#FFA602]"
-                onClick={() => router.push("/dashboard")}
-              >
-                Login
-              </Button>
+            <Button
+              type="primary"
+              htmlType="submit"
+              size="large"
+              className="w-full bg-[#FFA602] text-[#150062] hover:bg-[#FFA602]"
+              loading={loading}
+            >
+              Login
+            </Button>
               <div className="flex justify-between mt-4 text-sm md:text-base lg:text-lg xl:text-xl">
                 <p>Don&apos;t have an account?</p>
                 <p className="text-[#6742F1] cursor-pointer" onClick={() => router.push("/register")}>Sign up</p>
