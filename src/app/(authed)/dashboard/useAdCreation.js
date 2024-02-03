@@ -11,7 +11,7 @@ const useAdCreation = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://localhost:3000/ads/create", adData, {
+      const response = await axios.post("http://51.44.40.123/ads/create", adData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',

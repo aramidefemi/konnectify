@@ -10,11 +10,14 @@ import logoutIcon from "@public/assets/logout.svg";
 import orgShop from "@public/assets/shoporg.svg";
 import orgRise from "@public/assets/rise.svg";
 import menu from "@public/assets/menu-two.svg";
+import { useUserContext } from "../../contexts/UserContext"; // Import your user context
 
 function Layout({ children }: { children: React.ReactNode }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
+  const { user } = useUserContext(); // Use your user context
+  console.log(user);
 
   const handleMouseEnter = () => {
     setIsHovered2(true);
@@ -104,7 +107,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <div className="md:w-[68%] lg:w-[74%] xl:w-[70%] mt-8 lg:mt-12 md:pr-[2%] lg:pr-[8%] w-[98%] mx-auto md:mx-0">
         <div className="w-full flex justify-between items-center h-fit px-1 md:px-4">
           <div className="lg:w-[75%] w-[50%] md:w-[70%] bg-white p-2 md:p-4 lg:p-6 text-[#303030] rounded-[10px]">
-            Welcome Tesla
+            Welcome {user?.fullname} ( {user?.businessName} )
           </div>
           <div className="w-[35%] md:w-[25%] lg:w-[20%] bg-white p-2 lg:p-4 flex item-center rounded-[10px] justify-between">
             <Image

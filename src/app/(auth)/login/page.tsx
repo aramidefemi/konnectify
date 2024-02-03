@@ -21,7 +21,7 @@ const Page = () => {
     try {
       // Make API request using Axios
       const response = await axios.post(
-        "http://localhost:6000/auth/login",
+        "http://51.44.40.123/auth/login",
         values
       );
 
@@ -35,7 +35,7 @@ const Page = () => {
       setUser(user);
 
       // Navigate to dashboard
-      // router.push("/dashboard");
+      router.push("/dashboard");
     } catch (error) {
       console.error("Login failed", error);
     } finally {

@@ -8,8 +8,15 @@ import cursor from "@public/assets/cursor.svg";
 import PaymentSucessful from "./fragment.tsx/payment-sucessful";
 import { useUserContext } from "../../../contexts/UserContext"; // Import your user context
 import useAdCreation from './useAdCreation';
+import { usePaystackPayment } from 'react-paystack';
 
 
+const config = {
+  reference: (new Date()).getTime().toString(),
+  email: "user@example.com",
+  amount: 20000, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+  publicKey: 'pk_test_2249d3768f6ccf7617fee357012db2c495deafe9',
+};
 function Page() {
     const [open, setOpen] = useState(false);
     const [selectWidth, setSelectWidth] = useState('46%');
@@ -49,6 +56,22 @@ function Page() {
     }     
     },[])
 
+    
+  // you can call this function anything
+  const onSuccess = (reference: any) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+  };
+
+  // you can call this function anything
+  const onClose = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log('closed')
+  }
+   
+    const initializePayment = usePaystackPayment({ ...config,});
+   
+
     const handleAdCreation = async () => {
       try {
         if (user) {
@@ -69,9 +92,11 @@ function Page() {
           };
   
           // Make API request using Axios
+        
          const response = await createAd(adData, token);
           // Assuming the API response contains a success message or data
           console.log("Ad creation successful:", response.data);
+          initializePayment(onSuccess, onClose)
   
           // Optionally, show a success message
           message.success("Ad creation successful");
@@ -260,8 +285,7 @@ function Page() {
         Make Payment
       </Button>
           </div>
-        </div>
-        <PaymentSucessful visible={open} setVisible={setOpen} />
+        </div> 
       </div>
     </div>
   );

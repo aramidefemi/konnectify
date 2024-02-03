@@ -24,7 +24,7 @@ const handleRegistration = async (values: any) => {
   try {
     // Make API request using Axios
     const response = await axios.post(
-      "http://localhost:3000/auth/register",
+      "http://51.44.40.123/auth/register",
       values
     );
 
