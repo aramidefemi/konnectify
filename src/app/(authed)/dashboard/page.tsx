@@ -96,7 +96,7 @@ function Page() {
          const response = await createAd(adData, token);
           // Assuming the API response contains a success message or data
           console.log("Ad creation successful:", response.data);
-          initializePayment(onSuccess, onClose)
+          initializePayment({onSuccess, onClose})
   
           // Optionally, show a success message
           message.success("Ad creation successful");
